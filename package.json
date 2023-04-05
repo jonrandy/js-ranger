@@ -1,0 +1,29 @@
+{
+  "name": "js-ranger",
+  "version": "0.0.1",
+  "description": "Ranger - add a range syntax to your objects",
+  "main": "ranger.js",
+  "type": "module",
+  "module": "ranger.js",
+  "sideEffects": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/jonrandy/js-ranger.git"
+  },
+  "keywords": [
+    "js",
+    "javascript",
+    "range",
+    "object",
+    "syntax"
+  ],
+  "author": "Jon Randy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/jonrandy/js-ranger/-/issues"
+  },
+  "homepage": "https://gitlab.com/jonrandy/js-ranger"
+}
