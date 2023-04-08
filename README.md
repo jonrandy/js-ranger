@@ -19,7 +19,7 @@ const numbers = 1[[...10]]
 
 Usage is extremely simple, just import the `attach` function and use it to set up the range function on your required object:
 ```js
-import { attach } from 'js-ranger'
+import { attach } from 'ranger-js'
 
 const myRangeFunction = (start, end) => {
   // logic to return 'range' here
@@ -33,7 +33,7 @@ If you pass in optional parameters according to the syntax detailed at the start
 
 Also exported by the library as an example of usage is a function called `initNumberRangeSyntax`  that sets up a basic range syntax on the `Number` prototype - that does pretty much you would expect. It can also take an additional `stepSize` parameter that defaults to `1` and decides the (absolute) size of the steps between items in the range:
 ```js
-import { initNumberRangeSyntax } from 'js-ranger'
+import { initNumberRangeSyntax } from 'ranger-js'
 initNumberRangeSyntax()
 console.log(1[[...3]])  // [1, 2, 3]
 console.log(5[[...2]])  // [5, 4, 3, 2]
