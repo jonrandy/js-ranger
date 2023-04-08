@@ -1,5 +1,5 @@
 {
-  "name": "ranger-js",
+  "name": "@jonrandy/js-ranger",
   "version": "0.0.1",
   "description": "Ranger - add a range syntax to any object",
   "main": "ranger.js",
