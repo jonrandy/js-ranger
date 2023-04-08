@@ -9,9 +9,7 @@ let isInitialised = false
 export function attach(target, rangeFunc) {
   !isInitialised && init()
   target[Symbol.iterator] = function* range() {
-    yield RANGER_SYMBOL
-    yield target
-    yield getTempRangeMethodSymbol(target, this, rangeFunc)
+    yield [ RANGER_SYMBOL, target, getTempRangeMethodSymbol(target, this, rangeFunc) ]
   }
 }
 
@@ -25,8 +23,8 @@ function init() {
     if (hint === 'number') return Number(this.toString())
     if (!isValidRangerArray(this)) return this.toString()
     // return the symbol that 'names' the method on the target object
-    paramsStore[this[2]] = this.slice(3)
-    return this[2]
+    paramsStore[this[0][2]] = this.slice(1)
+    return this[0][2]
   }
 }
 
@@ -45,7 +43,7 @@ function getTempRangeMethodSymbol(target, rangeEndValue, func) {
 }
 
 // check if given array is a 'Ranger' array
-const isValidRangerArray = ([rangerSym, target, methodSym]) =>
+const isValidRangerArray = ([[rangerSym, target, methodSym]]) =>
   rangerSym === RANGER_SYMBOL && target.hasOwnProperty(methodSym)
 
 
