@@ -40,6 +40,16 @@ console.log(5[[...2]])  // [5, 4, 3, 2]
 console.log(0[[...3, 0.75]]) // [0, 0.75, 1.5, 2.25, 3]
 console.log(2[[...0, 0.5]]) // [2, 1.5, 1, 0.5, 0]
 ```
+The internals of the `initNumberRangeSyntax` function:
+```js
+attach(Number.prototype, (start, end, stepSize = 1) => {
+  const absStep = stepSize<0 ? Math.abs(stepSize) : stepSize
+  const step = start<=end ? absStep : -absStep
+  let arr = [], i, d = end > start
+  for (i=+start; d ? i<=end : i>=end; i+=step) arr.push(i)
+  return arr
+})
+```
 
 ## Possible Usages
 
