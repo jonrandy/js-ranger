@@ -31,7 +31,7 @@ If you pass in optional parameters according to the syntax detailed at the start
 
 ## Number Ranges
 
-Also exported by the library as an example of usage is a function called `initNumberRangeSyntax`  that sets up a basic range syntax on the `Number` prototype - that does pretty much you would expect. It can also take an additional `stepSize` parameter that defaults to `1` and decides the (absolute) size of the steps between items in the range:
+Also exported by the library as an example of usage is a function called `initNumberRangeSyntax`  that sets up a basic range syntax on the `Number` prototype - that does pretty much what you would expect. It can also take an additional `stepSize` parameter that defaults to `1` and decides the (absolute) size of the steps between items in the range:
 ```js
 import { initNumberRangeSyntax } from '@jonrandy/js-ranger'
 initNumberRangeSyntax()
