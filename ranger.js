@@ -58,3 +58,12 @@ export function initNumberRangeSyntax() {
     return arr
   })
 }
+
+export function initNumberRangeSyntaxGenerator() {
+  attach(Number.prototype, function* (start, end, stepSize = 1) {
+    const absStep = stepSize<0 ? Math.abs(stepSize) : stepSize
+    const step = start<=end ? absStep : -absStep
+    let arr = [], i, d = end > start
+    for (i=+start; d ? i<=end : i>=end; i+=step) yield i
+  })
+}
