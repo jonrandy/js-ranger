@@ -8,6 +8,7 @@ let isInitialised = false
 // attach the range syntax to the target object, using the given function to generate the range
 export function attach(target, rangeFunc) {
   !isInitialised && init()
+  // add the generator that will return the 'ranger array' when the spread operator is used on the target
   target[Symbol.iterator] = function* range() {
     yield [ RANGER_SYMBOL, target, getTempRangeMethodSymbol(target, this, rangeFunc) ]
   }
@@ -22,14 +23,15 @@ function init() {
     if (hint === 'default') return this.toString()
     if (hint === 'number') return Number(this.toString())
     if (!isValidRangerArray(this)) return this.toString()
-    // return the symbol that 'names' the method on the target object
+    // store any additional params we will be passing to the range function
     paramsStore[this[0][2]] = this.slice(1)
+    // return the symbol that 'names' the method on the target object
     return this[0][2]
   }
 }
 
 
-// create the one-time temporary method for the target, attach it, and return symbol 'name'
+// create the one-time temporary method for the target, attach it, and return symbol 'name' for the method
 function getTempRangeMethodSymbol(target, rangeEndValue, func) {
   const sym = Symbol('ranger temp method')
   const get = function() {
@@ -59,6 +61,8 @@ export function initNumberRangeSyntax() {
   })
 }
 
+// sample usage - range generator function for numbers, with optional step size
+// e.g. 27[[...42]] 1[[...3, 0.5]]
 export function initNumberRangeSyntaxGenerator() {
   attach(Number.prototype, function* (start, end, stepSize = 1) {
     const absStep = stepSize<0 ? Math.abs(stepSize) : stepSize
